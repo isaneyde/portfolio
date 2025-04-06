@@ -1,58 +1,51 @@
-body{
-   background-image: url("../img/background.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-  
+body {
+  background-image: url("../img/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
-h1{
-    color: white;
-    text-align: center;
+h1 {
+  color: var(--white);
+  text-align: center;
 }
-section{
-   display: flex;
-justify-content: center;
-
+section {
+  display: flex;
+  justify-content: center;
 }
-button{
-    padding: 5px;
-    border-radius: 10px;
-    background-color: black;
-    color: #9F86C0;
-    width: 200px;
-    align-self: center;
-
+button {
+  padding: 5px;
+  border-radius: 10px;
+  background-color: var(--secondary); /*Use as cores definidas na paleta*/
+  color: var(--secondary); /*Use as cores definidas na paleta*/
+  width: 200px;
+  align-self: center;
 }
-a{
-    text-decoration: none;
-    color: #9F86C0;
+a {
+  text-decoration: none;
+  color: var(--secondary); /*Use as cores definidas na paleta*/
 }
-#tel{
-    color: white;
+#tel {
+  color: var(--white); /*Use as cores definidas na paleta*/
 }
-section> div{
-    padding: 40px;
-    margin-top: 40px;
-    background-color: white;
-    opacity: 0.5;
-    border-radius:10px ;
-    display: flex;
-    flex-direction: column;
-    width: 400px;
-    height: 350px;
+section > div {
+  padding: 40px;
+  margin-top: 40px;
+  background-color: var(--white); /*Use as cores definidas na paleta*/
+  opacity: 0.5;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 350px;
 }
-.social-media{
-    display: flex;
+.social-media {
+  display: flex;
 }
-.social-media>img{
-    width:40px; 
-    height:40px;
-    margin: 20px 20px;
+.social-media > img {
+  width: 40px;
+  height: 40px;
+  margin: 20px 20px;
 }
-.social-media>img>button>a{
-font-weight: 700;
+.social-media > img > button > a {
+  font-weight: 700;
 }
-
-
-
-

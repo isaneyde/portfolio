@@ -1,58 +1,67 @@
- :root {
-  /*colors*/
-  --primary: #E0B1CB;
-  --secondary: #9F86C0;
-  --black:#180F0F ;
-  --white:#FFFFFF;
+/*
+  1. Não definiu a tipografia
+*/
 
-        
+:root {
+  /*colors*/
+  --primary: #e0b1cb;
+  --secondary: #9f86c0;
+  --black: #180f0f;
+  --white: #ffffff;
+  --surface: #9747ff;
+
+  /*typography*/
+   @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 }
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-  
-  body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; 
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
-  }
-  
-  header {
-    height: 70px;
-    display: flex;
-    justify-content: space-around;
-    gap: 20px;
-    align-items: center;
-    padding: 0 20px;
-  }
-  
-  header > nav {
-    display: flex;
-    gap: 200px;
-    
-    
-  }
-  
-  header > nav > a {
-    text-decoration: none;
-    color: var(--secondary);
-    font-weight: 300;
-    font-size: var(--paragraph);
-  }
-  
-  header > section {
-    display: flex;
-    gap: 8px;
-  }
-  main{
-    flex: 1;
-    padding: 20px;
-  }
+header {
+  height: 70px;
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  align-items: center;
+  padding: 0 20px;
+}
+
+header > nav {
+  display: flex;
+  gap: 200px;
+}
+
+header > nav > a {
+  text-decoration: none;
+  color: var(--secondary);
+  font-weight: 300;
+  font-size: var(--paragraph);
+}
+nav a {
+  color: var(--secondary);
+}
+
+nav a.active {
+  color: black;
+}
+
+header > section {
+  display: flex;
+  gap: 8px;
+}
+main {
+  flex: 1;
+  padding: 20px;
+}
 
 footer {
   height: 70px;
@@ -63,21 +72,19 @@ footer {
   color: var(--white);
   gap: 50px;
 }
-  footer> img{
-    width:40px ;
-    height:40px ;
-
-  }
-  footer> figcaption{
-    display: flex;
-    padding:30px;
-    color: var(--white);
-  }
-  footer>p{
-    justify-content: flex-start;
-  }
-  a{
-    text-decoration: none;
-    color: var(--white);
-  }
-  
+footer > img {
+  width: 40px;
+  height: 40px;
+}
+footer > figcaption {
+  display: flex;
+  padding: 30px;
+  color: var(--white);
+}
+footer > p {
+  justify-content: flex-start;
+}
+a {
+  text-decoration: none;
+  color: var(--white);
+}

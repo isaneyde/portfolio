@@ -1,57 +1,65 @@
+/*
+  1. Centralize o seu nome e a profissão
+  2. Remova o pequeno espaço em branco depois do footer
+*/
+
 :root {
   /*colors*/
-  --primary: #E0B1CB;
-  --secondary: #9F86C0;
-  --black:#180F0F ;
-  --white:#FFFFFF;
- 
-
+  --primary: #e0b1cb;
+  --secondary: #9f86c0;
+  --black: #180f0f;
+  --white: #ffffff;
 }
-#div1{
-    width: 100vw;
-    height: 100px;
-    background-color: var(--secondary);
-  }
-  section{
+#div1 {
+  width: 100vw;
+  height: 100px;
+  background-color: var(--secondary);
+}
+section {
   display: flex;
   justify-content: center;
- 
-  
-  }
-  section>button{
-    display: flex;
-    flex-direction: column;
-    background-color: var(--secondary);
-    border-radius: 10px;
-    padding: 20px;
-    height: 40px;
-  justify-content: center;
-   
- 
-  }
-  button>a{
-    text-decoration: none;
-    color: var(--black);
-   
-  }
-button{
-display: flex;
-align-content: space-around;
-margin:40px;
-width: 200px;
-height: 80px;
 }
-section>div{
+section > button {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--secondary);
+  border-radius: 10px;
+  padding: 20px;
+  height: 40px;
+  justify-content: center;
+}
+button > a {
+  text-decoration: none;
+  color: var(--black);
+}
+button {
+  display: flex;
+  align-content: space-around;
+  margin: 40px;
+  width: 200px;
+  height: 80px;
+}
+section > div {
   display: inline-block;
   margin: 40px;
 }
-h2{
-  padding: 10px;
+h2 {
+  text-align: center;
 }
-#profile{
-  width:297px;
-   height:302px;
-   margin-top: -5%;
+#profile {
+  width: 297px;
+  height: 302px;
+  margin-top: -5%;
+  
+}
 
+a {
+  transition: all 1s ease-out;
 }
- 
+
+a:hover,
+a:focus {
+  color:var(--black);
+  width: 2%;
+}
+

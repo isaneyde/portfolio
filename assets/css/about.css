@@ -1,25 +1,30 @@
+/*
+  1. Centralize o conteúdo principal
+*/
 main {
   margin-left: 20px;
   word-spacing: 1px;
-
+  display: inline-block;
+  
 }
 
 div {
-  border: 1px solid #9747ff;
+  border: 1px solid var(--surface); /*Use as cores definidas na paleta*/
   width: 10px;
   height: 10px;
-  background-color: #9747ff;
-  color: black;
+  background-color: var(--surface); /*Use as cores definidas na paleta*/
+  color: var(--black);
   border-radius: 100%;
 }
 
 hr {
-  width: 430px;
+  width: 40%; /*Use uma medida relativa*/
   font-size: larger;
-  border-color: #9747ff;
+  border-color: var(--surface); /*Use as cores definidas na paleta*/
   height: 0px;
-  margin-top:20px;
+  margin-top: 20px;
   margin-left: 10px;
+  
 }
 
 #skills {
@@ -27,42 +32,35 @@ hr {
   padding: 20px;
   width: 40vw;
   height: 25vh;
-  border: 1 px solid #9f86c0;
+  border: 1 px solid var(--secondary); /*Use as cores definidas na paleta*/
   border-radius: 20px;
-  background-color: #9f86c0;
-  color: white;
+  background-color: var(--secondary); /*Use as cores definidas na paleta*/
+  color: var(--white); /*Use as cores definidas na paleta*/
   margin-top: 20px;
   justify-content: space-around;
   row-gap: 20px;
-  
 }
 
 .bullets {
   margin-left: -20px;
   display: flex;
-  /*margin-top: 20px;*/
-  
 }
 
-#skills2{
-float: left;
-
+#skills2 {
+  float: left;
 }
-#skills2>:nth-child(2){
-    margin-top: 40px;
-
+#skills2 > :nth-child(2) {
+  margin-top: 40px;
 }
-#skills3>:nth-child(2){
-    margin-top: 40px;
-
+#skills3 > :nth-child(2) {
+  margin-top: 40px;
 }
-h3,h4, p{
-    margin-left: 10px;
-    
+h3,
+h4,
+p {
+  margin-left: 10px;
 }
-#lang{
+#lang {
   display: flex;
   gap: 60px;
 }
-
-
