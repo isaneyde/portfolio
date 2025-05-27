@@ -4,7 +4,7 @@ import { ListIcon } from "@phosphor-icons/react";
 export const Header = () => {
   return (
     <header>
-      <div className="w-screen h-20 bg-gradient-to-r from-red-400 to-violet-700">
+      <div className="w-screen h-20 bg-gradient-to-r from-red-400 to-violet-500">
         <h1 className=" font-mono text-white font-bold ml-4">
        ISA NEIDE SITOE
         </h1>
@@ -23,7 +23,7 @@ export const Header = () => {
               aria-label="close sidebar"
               className="drawer-overlay"
             ></label>
-            <ul className="menu bg-white text-black min-h-60 w-80 p-4 mt-5 mr-5 rounded-2xl">
+            <ul className="menu bg-white opacity-90 text-black min-h-60 w-80 p-4 mt-5 mr-5 rounded-2xl">
               {/* Sidebar content here */}
               <li>
                 <a>Sobre Mim</a>
