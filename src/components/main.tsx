@@ -76,7 +76,7 @@ export const Main = () => {
               backend, entusiasta na área da Inteligência artificial
               e especialista em transformar ideias em soluções digitais.
             </p>
-<Button variant="link" className="p-6 rounded-xl bg-slate-950 mt-2">
+<Button className="p-6 rounded-xl mt-2">
   <a target="_blank" href="https://drive.google.com/file/d/18Qq5QRQuh1hftkky9mDSclInT3wmmvvd/view?usp=sharing">Baixar Cv</a>
 </Button>
           </CardContent>
