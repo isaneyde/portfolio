@@ -20,7 +20,7 @@ export const Footer = () => {
             <GithubLogoIcon size={28} weight="fill"/>
           </a>
         </div>
-        <p>&copy; {new Date().getFullYear()}. Todos Direitos Reservados.</p>
+        <p className="text-center">&copy; {new Date().getFullYear()}. Todos Direitos Reservados.</p>
 
     </footer>
   );

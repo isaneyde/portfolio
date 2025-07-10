@@ -1,3 +1,5 @@
+
+import { Link } from "react-scroll";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -5,6 +7,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Menu } from "lucide-react";
+
 export const Header = () => {
   return (
     <header className="flex justify-end max-w-full">
@@ -13,10 +16,16 @@ export const Header = () => {
           <Menu />
         </DropdownMenuTrigger>
         <DropdownMenuContent className="font-bold font-mono center text-gray-950">
-          <DropdownMenuItem>Sobre Mim</DropdownMenuItem>
-           <DropdownMenuItem>Habilidades</DropdownMenuItem>
-          <DropdownMenuItem>Projectos</DropdownMenuItem>
-          <DropdownMenuItem>Contactos</DropdownMenuItem>
+          <DropdownMenuItem>
+            <Link to="about" smooth={true} duration={600}>Sobre Mim</Link>
+          </DropdownMenuItem>
+         
+          <DropdownMenuItem>
+            <Link to="projects" smooth={true} duration={600}> Projectos</Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <Link to="contact" smooth={true} duration={600}>Contactos</Link>
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
 

@@ -1,18 +1,30 @@
+"use client"
+import { Element } from "react-scroll";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
-import { Button } from "@/components/ui/button"
-import ReactPlayer from 'react-player'
+import { Button } from "@/components/ui/button";
+import emailjs from "@emailjs/browser";
+import {z} from "zod"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm, FormProvider } from "react-hook-form"
 
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-
+import {
+  FormLabel,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "./ui/textarea";
 const habilities = {
   visible: { opacity: 1, scale: 1, transition: { duration: 0.9 } },
   hidden: { opacity: 0, scale: 0 }
@@ -59,11 +71,30 @@ const AnimatedImage = ({ src, alt }: { src: string, alt: string }) => {
     />
   );
 };
-
+const formSchema = z.object({
+  name: z.string().min(3, {
+    message: "O nome deve ter no minímo 3 caracteres.",
+  }),
+   email: z.string().email("Digite um email válido.",),
+   subject: z.string().min(2, {
+    
+  }),
+})
+ 
 export const Main = () => {
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      subject: "",
+    },
+  });
+
   return (
-    <main className=" min-h-full text-gray-950 mt-3">
-      <section id="about">
+    <main className="min-h-full text-gray-950 mt-3">
+      <Element name="about">
+          <section>
         <Card className=" text-white bg-slate-700 text-center">
           <CardHeader>
             <CardTitle className="text-xl font-bold">SOBRE MIM</CardTitle>
@@ -86,26 +117,26 @@ export const Main = () => {
           <CardHeader>
             <CardTitle>HABILIDADES</CardTitle>
           </CardHeader>
-          <CardContent className="grid grid-cols-2 gap-8 self-center">
+          <CardContent className="grid grid-cols-2 gap-8 self-center  md:grid-cols-4 space-x-20 gap-20">
             {images.map((img, i) => (
               <AnimatedImage key={i} src={img.src} alt={img.alt} />
             ))}
           </CardContent>
         </Card>
       </section>
-      <section id="Projects" className="text-center mt-4">
+      </Element>
+    <Element name="projects">
+ <section className="text-center mt-4">
         <h1 className="text-xl font-bold">PROJECTOS</h1>
         <Card>
            <CardHeader>
             <CardTitle>Spotdados</CardTitle>
             <CardContent>
-              <ReactPlayer
-              muted={true}
-              src="../../img/spotdados.mp4"/>
+             <img src="../../img/spotdados.png" alt="prototipo spotdados" />
                 
             </CardContent>
-            <CardDescription></CardDescription>
-            <CardFooter></CardFooter>
+            <CardDescription>Projecto de um aplicativo mobile com objectivo de apresentar dados do histórico dos usuários do aplicativo de música.</CardDescription>
+       
            </CardHeader> 
         </Card>
         <Card className="text-slate-950">
@@ -115,15 +146,77 @@ export const Main = () => {
               <img src="../../img/mongoose.png" alt="prototipo-mongoose" />
             </CardContent>
             <CardDescription>
-              <p>Projecto de marcação de fila para serviços bancários desenvolvido no hackthon do programa Bytes4Future.</p>
+              <p>Projecto de marcação de fila para serviços bancários desenvolvido no hackathon do programa Bytes4Future.</p>
             </CardDescription>
-            <CardFooter></CardFooter>
+         
+           </CardHeader> 
+        </Card>
+            <Card className="text-slate-950">
+           <CardHeader>
+            <CardTitle>Farmácia</CardTitle>
+            <CardContent>
+              <img src="../../img/farmacia.png" alt="prototipo-mongoose" />
+            </CardContent>
+            <CardDescription>
+              <p>Projecto desenvolvido no âmbito académico para a criação de um aplicativo que facilitaa conexão entre pacientes farmácias.</p>
+            </CardDescription>
+      
            </CardHeader> 
         </Card>
       </section>
-      <section id="contact">
+    </Element>
+     <Element name="contact">
+<section className="text-center m-4" id="contact">
         <h1 className="text-xl">VAMOS CONVERSAR!</h1>
+        <Card>
+          <FormProvider  {...form}>
+            <form  className="flex flex-col gap-4 p-4" onSubmit={form.handleSubmit((data) => console.log(data))}>
+              <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Nome</FormLabel>
+                    <FormControl>
+                      <Input {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Email</FormLabel>
+                    <FormControl>
+                      <Input {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="subject"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Mensagem</FormLabel>
+                    <FormControl>
+                      <Textarea {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button type="submit">Enviar</Button>
+            </form>
+          </FormProvider>
+        </Card>
       </section>
+     </Element>
+      
     </main>
   );
 };
