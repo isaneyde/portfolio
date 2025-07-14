@@ -5,11 +5,11 @@ import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import emailjs from "@emailjs/browser";
-import {z} from "zod"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm, FormProvider } from "react-hook-form"
-import React, {useRef } from "react";
-
+import {z} from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm, FormProvider } from "react-hook-form";
+import {toast} from "sonner";
+import {Toaster} from "sonner";
 import {
   Card,
   CardContent,
@@ -82,34 +82,7 @@ const formSchema = z.object({
   }),
 })
 
-const form = useRef<HTMLFormElement>(null);
 
-  const sendEmail = (e: { preventDefault: () => void; }) => {
-    e.preventDefault();
-
-    if (form.current) {
-      emailjs
-        .sendForm(
-          "service_wui7g0a",  
-          "service_wui7g0a",  
-          form.current,
-          "wWQMb8aQqBGANxeGd"   
-        )
-        .then(
-          (result) => {
-            console.log("Email enviado:", result.text);
-            alert("Mensagem enviada com sucesso!");
-          },
-          (error) => {
-            console.error("Erro ao enviar:", error.text);
-            alert("Erro ao enviar mensagem.");
-          }
-        );
-    } else {
-      alert("Formulário não encontrado.");
-    }
-  }
- 
 export const Main = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -120,7 +93,38 @@ export const Main = () => {
     },
   });
 
+  const sendEmail = async (data: z.infer<typeof formSchema>) => {
+    try {
+await emailjs.send(
+    "service_wui7g0a",
+          "template_you69z8",{
+            name:data.name,
+            email:data.email,
+            message:data.message
+          },
+            "wWQMb8aQqBGANxeGd"
+)
+      await emailjs.send(
+        "service_wui7g0a",
+        "template_xgrnq1y",
+        {
+          name: data.name,
+          email: data.email,
+          message: data.message,
+        },
+        "wWQMb8aQqBGANxeGd"
+      );
+      toast.success("Mensagem enviada com sucesso!");
+      console.log("Enviado com sucesso")
+    } catch (error: any) {
+      toast.error("Erro ao enviar mensagem.");
+      console.error("Erro ao enviar:", error);
+    }
+  };
+
   return (
+    <>
+    <Toaster richColors position="top-center"/>
     <main className="min-h-full text-gray-950 mt-3">
       <Element name="about">
           <section>
@@ -195,56 +199,60 @@ export const Main = () => {
       </section>
     </Element>
      <Element name="contact">
-<section className="text-center m-4" id="contact">
-        <h1 className="text-xl">VAMOS CONVERSAR!</h1>
-        <Card>
-          <FormProvider  {...form}>
-            <form  className="flex flex-col gap-4 p-4" onSubmit={sendEmail}>
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Nome</FormLabel>
-                    <FormControl>
-                      <Input {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email</FormLabel>
-                    <FormControl>
-                      <Input {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="message"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Mensagem</FormLabel>
-                    <FormControl>
-                      <Textarea {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <Button type="submit">Enviar</Button>
-            </form>
-          </FormProvider>
-        </Card>
-      </section>
+        <section className="text-center m-4" id="contact">
+          <h1 className="text-xl">VAMOS CONVERSAR!</h1>
+          <Card>
+            <FormProvider {...form}>
+              <form
+                className="flex flex-col gap-4 p-4"
+                onSubmit={form.handleSubmit(sendEmail)}
+              >
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Nome</FormLabel>
+                      <FormControl>
+                        <Input {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Email</FormLabel>
+                      <FormControl>
+                        <Input {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Mensagem</FormLabel>
+                      <FormControl>
+                        <Textarea {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <Button type="submit">Enviar</Button>
+              </form>
+            </FormProvider>
+          </Card>
+        </section>
      </Element>   
     </main>
+    </>
   );
 };
