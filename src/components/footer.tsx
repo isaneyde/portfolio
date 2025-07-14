@@ -1,7 +1,7 @@
 import {GithubLogoIcon}  from "@phosphor-icons/react";
 export const Footer = () => {
   return (
-    <footer className=" text-white w-full h-30 bg-slate-950 p-4 gap-4 flex-1">
+    <footer className=" text-white w-full h-30 bg-slate-950 p-4 flex-1">
       
         <div className=" flex justify-around">
             <span>+258 82 181 9298</span>

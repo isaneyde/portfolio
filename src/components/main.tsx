@@ -8,6 +8,7 @@ import emailjs from "@emailjs/browser";
 import {z} from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm, FormProvider } from "react-hook-form"
+import React, {useRef } from "react";
 
 import {
   Card,
@@ -76,10 +77,38 @@ const formSchema = z.object({
     message: "O nome deve ter no minímo 3 caracteres.",
   }),
    email: z.string().email("Digite um email válido.",),
-   subject: z.string().min(2, {
+   message: z.string().min(2, {
     
   }),
 })
+
+const form = useRef<HTMLFormElement>(null);
+
+  const sendEmail = (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+
+    if (form.current) {
+      emailjs
+        .sendForm(
+          "service_wui7g0a",  
+          "service_wui7g0a",  
+          form.current,
+          "wWQMb8aQqBGANxeGd"   
+        )
+        .then(
+          (result) => {
+            console.log("Email enviado:", result.text);
+            alert("Mensagem enviada com sucesso!");
+          },
+          (error) => {
+            console.error("Erro ao enviar:", error.text);
+            alert("Erro ao enviar mensagem.");
+          }
+        );
+    } else {
+      alert("Formulário não encontrado.");
+    }
+  }
  
 export const Main = () => {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -87,7 +116,7 @@ export const Main = () => {
     defaultValues: {
       name: "",
       email: "",
-      subject: "",
+      message: "",
     },
   });
 
@@ -170,7 +199,7 @@ export const Main = () => {
         <h1 className="text-xl">VAMOS CONVERSAR!</h1>
         <Card>
           <FormProvider  {...form}>
-            <form  className="flex flex-col gap-4 p-4" onSubmit={form.handleSubmit((data) => console.log(data))}>
+            <form  className="flex flex-col gap-4 p-4" onSubmit={sendEmail}>
               <FormField
                 control={form.control}
                 name="name"
@@ -199,7 +228,7 @@ export const Main = () => {
               />
               <FormField
                 control={form.control}
-                name="subject"
+                name="message"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Mensagem</FormLabel>
@@ -215,8 +244,7 @@ export const Main = () => {
           </FormProvider>
         </Card>
       </section>
-     </Element>
-      
+     </Element>   
     </main>
   );
 };
