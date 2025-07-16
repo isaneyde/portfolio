@@ -1,5 +1,5 @@
 💼 Portfólio de Isa Neide
-Bem-vindo(a) ao meu portfólio! Sou Isa Neide, desenvolvedora backend com paixão por tecnologia, resolução de problemas e criação de soluções eficientes e escaláveis.
+ Sou Isa Neide, desenvolvedora fullstack com paixão por tecnologia, resolução de problemas e criação de soluções eficientes e escaláveis.
 
 Este projeto foi criado com o objetivo de apresentar os principais trabalhos, habilidades e experiências que venho adquirindo ao longo da minha jornada como programadora. Aqui você encontrará informações sobre mim, os projetos que desenvolvi, as tecnologias que domino e formas de entrar em contacto.
 
