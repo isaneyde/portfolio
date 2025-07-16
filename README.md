@@ -8,17 +8,19 @@ React.js
 
 Node.js
 
-Express
-
-MongoDB
+EmailJS
 
 TailwindCSS
 
 ShadCN UI
 
+Lucide-react
+
 Git & GitHub
 
-🚀 Funcionalidades
+
+📌 Objetivo
+O objetivo deste portfólio é destacar minhas competências técnicas e soft skills
 Apresentação profissional com uma interface moderna e responsiva
 
 Galeria de projetos com descrição e tecnologias utilizadas
@@ -26,7 +28,4 @@ Galeria de projetos com descrição e tecnologias utilizadas
 Secção de contacto integrada
 
 Design responsivo para diferentes dispositivos
-
-📌 Objetivo
-O objetivo deste portfólio é destacar minhas competências técnicas e soft skills.
 
