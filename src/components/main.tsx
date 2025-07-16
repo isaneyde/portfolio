@@ -94,6 +94,7 @@ export const Main = () => {
   });
 
   const sendEmail = async (data: z.infer<typeof formSchema>) => {
+    toast.loading("Enviando mensagem...");
     try {
 await emailjs.send(
     "service_wui7g0a",
